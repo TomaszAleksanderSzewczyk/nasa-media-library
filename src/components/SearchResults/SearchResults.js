@@ -36,12 +36,18 @@ const ResultInfo = styled.div`
 `;
 
 const SearchResults = ({ results }) => {
-  console.log(results);
   return (
     <ResultsGrid>
       {results.map((item) => {
         const data = item.data[0];
         const thumbnail = item.links?.[0]?.href;
+        const formattedDate = data.date_created 
+          ? new Date(data.date_created).toLocaleDateString('pl-PL', {
+              day: '2-digit',
+              month: '2-digit', 
+              year: 'numeric'
+            }).replace(/\./g, '-')
+          : 'Data nieznana';
 
         return (
           <ResultCard key={data.nasa_id} to={`/show/${data.nasa_id}`}>
@@ -54,6 +60,7 @@ const SearchResults = ({ results }) => {
               <h3>{data.title}</h3>
               <p>{data.location || 'Location unknown'}</p>
               <p>{data.photographer || 'Photographer unknown'}</p>
+              <p>{formattedDate || 'Date unknown'}</p>
             </ResultInfo>
           </ResultCard>
         );

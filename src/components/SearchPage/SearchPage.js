@@ -29,13 +29,6 @@ const ErrorMessage = styled.div`
 const SearchPage = () => {
   const { results, loading, error, search } = useNasaSearch();
 
-  useEffect(() => {
-
-    const savedQuery = localStorage.getItem('nasaSearchQuery');
-    const savedYearStart = localStorage.getItem('nasaSearchYearStart');
-    const savedYearEnd = localStorage.getItem('nasaSearchYearEnd');
-    
-  }, [search]);
 
   const handleSearch = (query, yearStart, yearEnd) => {
     localStorage.setItem('nasaSearchQuery', query);

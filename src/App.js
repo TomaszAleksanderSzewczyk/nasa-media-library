@@ -1,10 +1,10 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider, Route, createRoutesFromElements } from 'react-router-dom';
+import { createHashRouter, RouterProvider, Route, createRoutesFromElements } from 'react-router-dom';
 import SearchPage from './components/SearchPage/SearchPage';
 import ShowPage from './components/ShowPage/ShowPage';
 import GlobalStyles from './styles/GlobalStyles';
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   createRoutesFromElements(
     <Route path="/">
       <Route index element={<SearchPage />} />
